@@ -1,0 +1,178 @@
+#include <iostream>
+
+/*
+*
+*
+*
+* Program sprawdzający czy podany ciąg znaków jest palindromem (czyli takim, który czytany od tyłu jest taki sam, jak czytany od przodu, np. "kajak")
+* Program sprawdzający czy podane dwa słowa są anagramami (czyli takimi, które zawierają te same litery, ale w innym układzie, np. "klasa" i "salka")
+* Program wyciągający informacje z numeru PESEL
+* Program implementujący algorytm szyfrowania Cezara (proste szyfrowanie, w którym każdy znak w tekście jest zastępowany innym znakiem, przesuniętym o stałą liczbę pozycji w alfabecie).
+
+* Program który na wejściu przyjmie równanie a na wyjściu da równanie w odwrotnej notacji polskiej ONP. Np. na wejściu 2+3*4 na wyjścu da 234*+
+* Program, który na wejściu przyjmie rówanie w ONP a na wyjściu wyświetli wynik rówania.
+* Algorytm szyfrowania AtBash Cipher - algorytm szyfrujący, w którym każda litera jest zamieniana na literę z przeciwnej strony alfabetu (np. A na Z, B na Y itd.)
+*/
+
+//Napisz program ktory pobierze znak
+void task1()
+{
+	char characterFromUser;
+	std::cout << "Podaj znak: ";
+	std::cin >> characterFromUser;
+	std::cout << characterFromUser;
+}
+
+//Napisz program, który wczyta znak z klawiatury 
+//i sprawdzi czy to mała litera alfabetu.
+void task2()
+{
+	char characterFromUser;
+	std::cout << "Podaj znak: ";
+	std::cin >> characterFromUser;
+
+	//if(characterFromUser >= 97 && characterFromUser <= 122)
+	if (characterFromUser >= 'a' && characterFromUser <= 'z')
+		std::cout << "Mała litera alfabetu.\n";
+	else
+		std::cout << "Nie mała litera alfabetu.\n";
+
+	/*char x = 'a';
+	std::cout << x;
+	x = 'g' + 1;
+	std::cout << x;
+
+	*/
+}
+
+//Napisz program, który poprosi o podanie imienia i sie przywita.
+void task3()
+{
+	std::string username = "";
+	std::cout << "Podaj imie: ";
+	std::cin >> username;
+	std::cout << "Witaj " << username << "\n";
+}
+
+//Napisz program, który sprawdzi czy podane hasło jest poprawne
+//np. jesli haslo = abc123 wyswietli poprawne hasło.
+//jesli nie wyswietli niepoprawne hasło.
+void task4()
+{
+	std::string password;
+	std::cout << "Podaj hasło: ";
+	std::cin >> password;
+
+	if (password == "abc123")
+		std::cout << "Haslo poprawne\n";
+	else
+		std::cout << "Haslo niepoprawne\n";
+}
+
+//Napisz program, który wczyta łańcuch znaków i policzy ile jest małych liter 'a'.
+void task5()
+{
+	std::string textFromUser;
+	std::cout << "Podaj łańcuch znaków\n";
+	std::cin >> textFromUser;
+
+	int numerOfCharacters = 0;
+
+	/*std::cout << "Pierwszy znak to " << textFromUser[0] << "\n";
+	textFromUser[1] = 'x';
+	std::cout << "Ilość znakow " << textFromUser.length() << "\n";*/
+
+	for (int i = 0; i < textFromUser.length(); i++)
+	{
+		if (textFromUser[i] == 'a')
+			numerOfCharacters++;
+	}
+	std::cout << "Jest " << numerOfCharacters << " liter 'a'\n";
+}
+
+//Napisz program, który będzie prosił o hasło. Nie przepuści dalej dopóki nie zostanie ono podane prawidłowo.
+void task6()
+{
+	std::string password;
+	std::cout << "Podaj hasło: ";
+	std::cin >> password;
+
+	do
+	{
+		std::cout << "Podaj hasło: ";
+		std::cin >> password;
+		if (password == "abc123")
+			std::cout << "Haslo poprawne\n";
+		else
+			std::cout << "Haslo niepoprawne\n";
+
+	} while (password != "abc123");
+
+}
+
+//01000001 01110010 01110100 01110101 01110010 01001011
+//Napisz program, który pobiera od użytkownika ciąg znaków i wyświetla liczbę samogłosek i spółgłosek w tym ciągu.
+void task7()
+{
+	std::string characterFromUser;
+	std::cout << "Podaj cig znaków: ";
+	std::cin >> characterFromUser;
+
+	//samogłoska
+	int numberOfVowel = 0;
+	//spółgłoska
+	int numberOfConsonant = 0;
+
+	for (int i = 0; i < characterFromUser.length(); i++)
+	{
+		if (characterFromUser[i] == 'a'
+			|| characterFromUser[i] == 'ą'
+			|| characterFromUser[i] == 'e'
+			|| characterFromUser[i] == 'ę'
+			|| characterFromUser[i] == 'i'
+			|| characterFromUser[i] == 'o'
+			|| characterFromUser[i] == 'u'
+			|| characterFromUser[i] == 'y')
+			numberOfVowel++;
+		else if (characterFromUser[i] >= 'a' && characterFromUser[i] <= 'z')
+			numberOfConsonant++;
+	}
+	std::cout << "W tym ciagu jest " << numberOfVowel << " samogłosek i " << numberOfConsonant << " spółgłosek\n";
+}
+
+//Poproś użytkownika o wprowadzenie liczby całkowitej w systemie dziesiętnym.
+//Następnie skonwertuj tę liczbę na system dwójkowy (binarny) i wyświetl wynik.
+void task8()
+{
+	int numFromUser;
+	int tmpNum;
+	std::string tmpNumInBin;
+	std::string numberInBin;
+	std::cout << "Podaje liczbe: ";
+	std::cin >> numFromUser;
+	tmpNum = numFromUser;
+
+	do
+	{
+		tmpNumInBin = tmpNum % 2;
+		numberInBin = numberInBin + tmpNumInBin;
+		tmpNum / 2;
+	} while (tmpNum == 0);
+
+	std::cout << numberInBin << "\n";
+}
+
+
+int main()
+{
+	setlocale(LC_CTYPE, "polish");
+
+	task8();
+}
+
+/*
+Typy znakow:
+* char - 1 bajt całowito liczbowa <-128; 127> 'a'
+* std::string - ciag znakow "abc...123"
+
+*/
